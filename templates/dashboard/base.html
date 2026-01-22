@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}AutoVids AI - AI-Powered Video Automation{% endblock %}</title>
+    
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css">
+    
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <div class="logo">
+                <i class="fas fa-video"></i>
+                <span>AutoVids AI</span>
+            </div>
+        </div>
+        
+        <nav class="sidebar-nav">
+            <a href="{% url 'dashboard:index' %}" class="nav-item {% if request.resolver_match.url_name == 'index' %}active{% endif %}">
+                <i class="fas fa-home"></i>
+                <span>Dashboard</span>
+            </a>
+            
+            <a href="{% url 'dashboard:content' %}" class="nav-item {% if request.resolver_match.url_name == 'content' %}active{% endif %}">
+                <i class="fas fa-lightbulb"></i>
+                <span>Content</span>
+            </a>
+            
+            <a href="{% url 'dashboard:videos' %}" class="nav-item {% if request.resolver_match.url_name == 'videos' %}active{% endif %}">
+                <i class="fas fa-film"></i>
+                <span>Videos</span>
+            </a>
+            
+            <a href="{% url 'dashboard:accounts' %}" class="nav-item {% if request.resolver_match.url_name == 'accounts' %}active{% endif %}">
+                <i class="fab fa-tiktok"></i>
+                <span>Accounts</span>
+            </a>
+            
+            <a href="{% url 'dashboard:analytics' %}" class="nav-item {% if request.resolver_match.url_name == 'analytics' %}active{% endif %}">
+                <i class="fas fa-chart-line"></i>
+                <span>Analytics</span>
+            </a>
+            
+            <a href="{% url 'dashboard:logs' %}" class="nav-item {% if request.resolver_match.url_name == 'logs' %}active{% endif %}">
+                <i class="fas fa-list"></i>
+                <span>System Logs</span>
+            </a>
+            
+            <div class="nav-divider"></div>
+            
+            <a href="{% url 'admin:index' %}" class="nav-item">
+                <i class="fas fa-cog"></i>
+                <span>Admin Panel</span>
+            </a>
+        </nav>
+        
+        <div class="sidebar-footer">
+            <div class="user-info">
+                <i class="fas fa-user-circle"></i>
+                <span>{{ user.username }}</span>
+            </div>
+        </div>
+    </aside>
+    
+    <!-- Main Content -->
+    <main class="main-content">
+        <header class="top-bar">
+            <div class="page-title">
+                <h1>{% block page_title %}Dashboard{% endblock %}</h1>
+                <p class="page-subtitle">{% block page_subtitle %}Overview of your AI video automation{% endblock %}</p>
+            </div>
+            
+            <div class="top-bar-actions">
+                <button class="btn btn-icon" id="notifications-btn">
+                    <i class="fas fa-bell"></i>
+                    <span class="badge">3</span>
+                </button>
+                
+                <button class="btn btn-icon" id="theme-toggle">
+                    <i class="fas fa-moon"></i>
+                </button>
+            </div>
+        </header>
+        
+        <div class="content-wrapper">
+            {% block content %}{% endblock %}
+        </div>
+    </main>
+    
+    <script src="{% static 'js/dashboard.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
