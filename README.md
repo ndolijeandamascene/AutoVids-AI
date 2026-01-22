@@ -1,24 +1,10 @@
 # AutoVids AI: AI-Powered "Did You Know?" Content Automation Platform
 
-AutoVids AI is a complete Django-based platform that automates the creation and uploading of viral "Did You Know?" videos for TikTok and other short-form video platforms. It uses AI to generate facts, scripts, voiceovers, and subtitles, then composites them into engaging videos and schedules them for upload, all while simulating safe human behavior.
+This Django-based system is an AI-powered automation platform designed to grow TikTok accounts by generating short, high-retention “Did You Know?” videos safely and consistently. It uses multiple AI providers to generate unique, curiosity-driven facts, rotates hooks to avoid repetition, converts scripts into natural-sounding voiceovers, and automatically creates vertical videos with captions and varied backgrounds. 
 
-## 🚀 Key Features
+A scheduling and safety layer built with **Celery** and **Redis** controls posting frequency, enforces daily limits, introduces random human-like delays, and respects account age to minimize ban risk. Video uploads are handled exclusively through browser automation using **Playwright** with saved login sessions—no unofficial TikTok APIs or passwords are stored—making the system more stable and secure. 
 
-*   **Content Intelligence Engine:**
-    *   Generates surprising facts using OpenAI, Anthropic, or Google Gemini.
-    *   **Hook Rotation:** Automatically rotates hook styles (Curiosity, Shock, Question) to avoid repetition.
-    *   **Duplicate Detection:** Prevents reusing facts or similar content.
-*   **Media Engine:**
-    *   **AI Voiceovers:** Uses ElevenLabs or Google TTS for high-quality voiceovers.
-    *   **Video Composition:** Automatically adds background videos, subtitles, and music.
-    *   **Smart Selection:** Intelligently selects backgrounds and voices to ensure variety.
-*   **Safe Automation:**
-    *   **Human Behavior Simulation:** Mimics human browsing patterns (pauses, mouse movements) to avoid bot detection.
-    *   **Risk Management:** Tracks account health and pauses activity if risk score is high.
-    *   **Automated Scheduling:** Schedules uploads at optimal times with random variations.
-*   **Comprehensive Dashboard:**
-    *   Track video performance, account status, and system logs.
-    *   Manage content categories, hooks, and background assets.
+All configuration is managed via environment variables, and Django provides a central admin/dashboard for monitoring content generation, uploads, and logs, ensuring the platform is scalable, maintainable, and production-ready.
 
 ## 🛠️ Technology Stack
 
